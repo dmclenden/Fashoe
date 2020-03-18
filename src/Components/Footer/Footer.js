@@ -18,8 +18,7 @@ class Footer extends Component {
       >
         <div>
           <div
-            style={{ color: "#504F5A", fontWeight: "bold", marginBottom: 10 }}
-          >
+            style={{ color: "#504F5A", fontWeight: "bold", marginBottom: 10 }}>
             Buy
           </div>
           <NavLink
@@ -32,12 +31,11 @@ class Footer extends Component {
             activeStyle={{
               color: "#4282ad",
               textDecoration: "underline"
-            }}
-          >
+            }}>
             <div className="footerItem">Terms of payment</div>
           </NavLink>
           <NavLink
-            to={"/delivery"}
+            to={"/shipping"}
             exact
             style={{
               textDecoration: "none",
@@ -48,7 +46,7 @@ class Footer extends Component {
               textDecoration: "underline"
             }}
           >
-            <div className="footerItem">Delivery</div>
+            <div className="footerItem">Shipping and Returns</div>
           </NavLink>
         </div>
         <div>
@@ -58,7 +56,7 @@ class Footer extends Component {
             About us
           </div>
           <NavLink
-            to={"/info"}
+            to={"/information"}
             exact
             style={{
               textDecoration: "none",
