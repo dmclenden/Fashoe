@@ -8,12 +8,36 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { setCheckedOutItems } from "../../Redux/Actions";
+import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
+import {toast} from 'react-toastify';
+
+import "react-toastify/dist/ReactToastify.css";
+
+
+toast.configure();
 
 const mapStateToProps = state => {
   return {
     checkedOutItems: state.checkedOutItems
   };
 };
+
+async function handleToken(token) {
+  //console.log({token, addresses})
+  const response = await axios.post('https://8ef7h.sse.codesandbox.io/checkout' , {
+        token
+        //mapStateToProps
+  });
+
+  const { status } = response.data;
+  console.log("Response:", response.data);
+  if (status === "success") {
+    toast("Success! Check email for details.", { type: "success" }, <button> Go home</button>);
+  } else {
+    toast("Success! Check email for details.", { type: "success" }, <button> Go home</button>);
+  }
+}
 
 // This component shows the items user checked out from the cart.
 class ConnectedOrder extends Component {
@@ -56,19 +80,9 @@ class ConnectedOrder extends Component {
             fontSize: 22
           }}
         >
-          Total price: {totalPrice} $
+          Total price: $ {totalPrice} 
         </div>
-        <Button
-          color="primary"
-          variant="outlined"
-          disabled={totalPrice === 0}
-          onClick={() => {
-            console.log("purchased");
-          }}
-          style={{ margin: 5, marginTop: 30 }}
-        >
-          Purchase
-        </Button>
+
         <Button
           color="secondary"
           variant="outlined"
@@ -76,10 +90,18 @@ class ConnectedOrder extends Component {
           onClick={() => {
             this.props.dispatch(setCheckedOutItems([]));
           }}
-          style={{ margin: 5, marginTop: 30 }}
-        >
+          style={{ margin: 5, marginTop: 30 }}>
           Discard
         </Button>
+
+          <StripeCheckout
+          stripeKey = "pk_test_FI8OrjnUuaMSJ6c9uzcB6eUP002sbgDKhy"
+          token = {handleToken}
+          billingAddress
+          shippingAddress
+          amount = {totalPrice * 100}
+          />
+        
       </div>
     );
   }
