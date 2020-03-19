@@ -67,7 +67,7 @@ class Footer extends Component {
               textDecoration: "underline"
             }}
           >
-            <div className="footerItem">Company Info</div>
+            <div className="footerItem">Company Information</div>
           </NavLink>
         </div>
         <div>
