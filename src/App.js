@@ -14,6 +14,8 @@ import Footer from "./Components/Footer/Footer";
 import Payment from "./Components/Payment/payment";
 import Shipping from "./Components/Shipping/shipping";
 import Information from "./Components/Information/information";
+import mailingList from "./Components/mailingList/mailinglist";
+import thankYou from "./Components/thankYou/thankyou";
 
 class App extends Component {
   render() {
@@ -32,6 +34,8 @@ class App extends Component {
               <Route path="/payment" component={Payment} />
               <Route path="/shipping" component={Shipping} />
               <Route path="/information" component={Information} />
+              <Route path="/mailinglist" component={mailingList} />
+              <Route path="/thankYou" component={thankYou} />
               <ProtectedRoute path="/order" component={Order} />
               <Route
                 component={() => (
