@@ -112,6 +112,33 @@ class ConnectedHeader extends Component {
               Search
             </Button>
           </div>
+
+          <Button
+         style={{ marginLeft: 20 }}
+         variant="outlined"
+         color="primary"
+         onClick={() => {
+          this.props.history.push("/mailinglist");
+        }}>
+
+         Join Mailing List
+         
+         </Button>
+
+         <Button
+         style={{ marginLeft: 20 }}
+         variant="outlined"
+         color="primary"
+         onClick={() => {
+          this.props.history.push("/register");
+        }}>
+
+         Register
+         
+         </Button>
+          
+         
+
           <div className="right-part">
             {!this.props.loggedInUser ? (
               <Button
@@ -124,6 +151,7 @@ class ConnectedHeader extends Component {
               >
                 Log in
               </Button>
+        
             ) : (
                 <Avatar
                   onClick={event => {
